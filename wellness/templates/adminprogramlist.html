@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>admin proglist</title>
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 100%; /* Ensure the container fits within the viewport */
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed; /* Ensure table layout doesn't overflow */
+    word-wrap: break-word; /* Ensure long words break and don't overflow */
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+    background-color: #ddd;
+}
+
+#customers th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #04AA6D;
+    color: white;
+}
+
+/* Button Styling for Actions */
+.form-button {
+    display: inline-flex; /* Makes the button a flex container */
+    align-items: center; /* Vertically aligns the content inside */
+    justify-content: center; /* Horizontally aligns the content */
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: normal; /* Allows content to wrap */
+    word-wrap: break-word; /* Forces text to wrap */
+    line-height: 1.5; /* Adjusts line height for better readability */
+}
+
+.form-button:hover {
+    background-color: #2980b9;
+}
+
+.form-button:active {
+    background-color: #1e6a7f;
+}
+
+
+/* Ensure button within table cell fits properly */
+td form {
+    margin: 0; /* Remove any extra margins */
+}
+
+td button {
+    max-width: 100%; /* Ensure buttons don't stretch out too far */
+    width: auto; /* Let buttons take up as much space as needed */
+    padding: 8px 16px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.navbar {
+            background-color: rgb(188, 52, 122);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h3 {
+            margin: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+</style>
+
+
+</head>
+<body>
+  <div class="navbar">
+    <h3>IITB Student Events Club</h3>
+    <div>
+        <a href="/adminhome">Home</a>
+        <a href="/dashboard">Dashbaord</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+ <h1 align="center">Programs List</h1>
+    <div class="container">
+		<div>
+			<a title="Add" href="/addwp"  data-toggle="tooltip"><i class="material-icons">&#xE03B;</i>Add New Program</a>
+		</div>
+		<br>
+        <div class="row">
+
+
+            <table class="table" id="customers">
+                <thead>
+                    <tr>
+                        <th>Program Id</th>
+                        <th>Program Name</th>
+                        <th>Start Date Time</th>
+                        <th>End Date Time</th>
+                        <th>Category</th>
+                        <th>Program Venue</th>
+                        <th>Organizer</th>
+                        <th>Organizer Contact</th>
+                        <th>Description</th>
+                   		<th colspan="3" >Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for program in programs %}
+                    <tr>
+                        <td>{{ program.pid }}</td>
+                        <td>{{ program.pname }}</td>
+                        <td>{{ program.pstart }}</td>
+                        <td>{{ program.pend }}</td>
+                        <td>{{ program.pcategory }}</td>
+                        <td>{{ program.pvenue }}</td>
+                        <td>{{ program.porganizer }}</td>
+                        <td>{{ program.pcontact }}</td>
+                        <td>{{ program.pdesc }}</td>
+                      	<td><form action="{{ url_for('main.update_wp', wpid=program.pid) }}" method="get">
+                        <button type="submit" class="btn btn-secondary">Update</button>
+                        </form></td>
+                        <td>
+                        <form action="{{ url_for('main.delete_wp', wpid=program.pid) }}"  method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        </form></td>
+                 		<td><form action="{{ url_for('main.get_program_participations', wpid=program.pid) }}" method="get">
+                        <button type="submit" class="form-button">View Participants</button>
+                        </form></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</body>
+	
+</html>

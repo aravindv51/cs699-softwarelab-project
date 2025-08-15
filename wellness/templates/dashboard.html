@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        .navbar {
+            background-color: rgb(188, 52, 122);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h3 {
+            margin: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .content-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .content-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .content-header p {
+            margin-top: 0.5rem;
+            color: #777;
+        }
+
+        /* Cards Layout */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: calc(50% - 20px); /* Responsive width for two cards in a row */
+            max-width: 400px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 0;
+            padding: 1rem;
+            border-bottom: 1px solid #f4f4f9;
+        }
+        .card-footer {
+            padding: 1rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h3>IITB Student Events Club</h3>
+        <div>
+            <a href="/adminhome">Home</a>
+            <a href="#">Dashbaord</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-header">
+            <h2>Insights and Analytics</h2>
+            <p>Explore participation trends and performance metrics below.</p>
+        </div>
+
+        <div class="grid">
+            <!-- Graph Cards -->
+            <div class="card">
+                <h3>Challenge Participation by Category</h3>
+                <img src="{{ url_for('main.ch_category_participation') }}" alt="Challenge Category Participation Graph">
+                <div class="card-footer">Graph showing participation in challenges category wise</div>
+            </div>
+
+            <div class="card">
+                <h3>Gender distribution in Challenges</h3>
+                <img src="{{ url_for('main.ch_gender_participation') }}" alt="Challenge Gender Distribution">
+                <div class="card-footer">Pie chart showing gender wise percentage involement in challenges</div>
+            </div>
+
+            <div class="card">
+                <h3>Programs participation category wise</h3>
+                <img src="{{ url_for('main.pr_category_participation') }}" alt="Programs Category Distribution">
+                <div class="card-footer">Graph showing participation in programs category wise</div>
+            </div>
+
+            <div class="card">
+                <h3>Gender distribution in Programs</h3>
+                <img src="{{ url_for('main.pr_gender_participation') }}" alt="Programs Gender Distribution">
+                <div class="card-footer">Pie chart showing gender wise involevement in programs</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

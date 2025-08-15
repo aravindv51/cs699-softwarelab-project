@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userhome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .navbar {
+            background-color: green;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        .container {
+            padding: 2rem;
+        }
+        .content-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .content-card h2 {
+            color: #0056b3;
+            margin-bottom: 1rem;
+        }
+        .content-card p {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card h3 {
+            margin: 1rem 0;
+        }
+        .card p {
+            padding: 0 1rem;
+        }
+        .card button {
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .card button:hover {
+            background-color: #003d82;
+        }
+
+        .navbar {
+            background-color: rgb(188, 52, 122);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h3 {
+            margin: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h3>IITB Student Events Club</h3>
+        <div>
+            <a href="/userhome">Home</a>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- Content Card -->
+    <div class="container">
+        <div class="content-card">
+                <h1>Registration Successful!</h1>
+                <p>Thank you for registering for the program: <strong>{{ pname }}</strong></p>
+                <p>Your registration ID is: <strong>{{ preg.ppid }}</strong></p>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* General body styling */
+        body {
+            background: linear-gradient(135deg, #f3f4f6, #dee2e6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Header styling */
+        .header {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header img {
+            height: 50px;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* Form styling */
+        .colorful-form {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px; /* Adjust for header spacing */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .btn-secondary {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <img src="../static/images/iitb.jpg" alt="IIT Bombay Logo">
+        <h1>Student Event Management System</h1>
+    </div>
+
+    <!-- Login Form -->
+    <form class="colorful-form" action="/login" method="POST">
+        <h2>Login</h2>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
+            <div id="passwordHelp" class="form-text">Keep your password confidential.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="/signup" class="btn btn-secondary">New User? Register Here</a>
+    </form>
+</body>
+</html>
